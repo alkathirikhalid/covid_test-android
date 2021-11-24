@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CovidTest</string>
+    <string name="list_title">COVID 19 cases in the world today</string>
+    <string name="active_cases">Active cases</string>
+    <string name="deaths">Deaths</string>
+    <string name="cases_ratio">Active cases for 100.000 habitants</string>
+    <string name="deaths_ratio">Deaths for 100.000 habitants</string>
 </resources>

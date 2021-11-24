@@ -28,7 +28,7 @@ public class Response {
         this.body = body;
     }
 
-     boolean isSuccesful() {
+     public boolean isSuccesful() {
         return ValueRange.of(200,209).isValidIntValue(status);
     }
 

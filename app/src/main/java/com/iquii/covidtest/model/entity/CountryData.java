@@ -1,35 +1,25 @@
 package com.iquii.covidtest.model.entity;
 
-public class CountryData {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CountryData implements Parcelable {
 
     private int active;
     private int deaths;
     private String country;
     private int population;
-    private String lat;
-    private String lng;
-    private String updated;
 
-    public CountryData(int active, int deaths, String country, int population, String lat, String lng, String updated) {
+
+    public CountryData(int active, int deaths, String country, int population) {
         this.active = active;
         this.deaths = deaths;
         this.country = country;
         this.population = population;
-        this.lat = lat;
-        this.lng = lng;
-        this.updated = updated;
+        getActiveRatio = (double) this.active /100000;
+        getDeathRatio = (double) this.deaths /100000;
     }
 
-
-    public CountryData(int active, int deaths, String country, int population,  String updated) {
-        this.active = active;
-        this.deaths = deaths;
-        this.country = country;
-        this.population = population;
-        this.lat = null;
-        this.lng = null;
-        this.updated = updated;
-    }
 
 
     public int getActive() {
@@ -64,27 +54,59 @@ public class CountryData {
         this.population = population;
     }
 
-    public String getLat() {
-        return lat;
+    public double getActiveRatio;
+
+    public double getDeathRatio;
+
+    @Override
+    public String toString() {
+        return "CountryData{" +
+                "active=" + active +
+                ", deaths=" + deaths +
+                ", country='" + country + '\'' +
+                ", population=" + population +
+                '}';
     }
 
-    public void setLat(String lat) {
-        this.lat = lat;
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    public String getLng() {
-        return lng;
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.active);
+        dest.writeInt(this.deaths);
+        dest.writeString(this.country);
+        dest.writeInt(this.population);
     }
 
-    public void setLng(String lng) {
-        this.lng = lng;
+    public void readFromParcel(Parcel source) {
+        this.active = source.readInt();
+        this.deaths = source.readInt();
+        this.country = source.readString();
+        this.population = source.readInt();
+
     }
 
-    public String getUpdated() {
-        return updated;
+    protected CountryData(Parcel in) {
+        this.active = in.readInt();
+        this.deaths = in.readInt();
+        this.country = in.readString();
+        this.population = in.readInt();
+        getActiveRatio = (double) active/100000;
+        getDeathRatio = (double)  deaths/100000;
     }
 
-    public void setUpdated(String updated) {
-        this.updated = updated;
-    }
+    public static final Parcelable.Creator<CountryData> CREATOR = new Parcelable.Creator<CountryData>() {
+        @Override
+        public CountryData createFromParcel(Parcel source) {
+            return new CountryData(source);
+        }
+
+        @Override
+        public CountryData[] newArray(int size) {
+            return new CountryData[size];
+        }
+    };
 }

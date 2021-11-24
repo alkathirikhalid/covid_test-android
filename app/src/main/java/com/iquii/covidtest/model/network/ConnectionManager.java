@@ -10,11 +10,11 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.temporal.ValueRange;
 
-public class ConnectionManager {
+public  class ConnectionManager {
 
     private static final String TAG = "CONNECTION";
 
-    static Response connect(String path){
+    public static Response connect(String path){
         StringBuilder stringBuilder  = new StringBuilder();
         int statusCode = 0;
         HttpURLConnection conn = null;
@@ -39,12 +39,14 @@ public class ConnectionManager {
             while ((line = reader.readLine()) != null) {
                 stringBuilder.append(line);
             }
+           in.close();
         } catch (IOException e) {
             e.printStackTrace();
             Log.d(TAG, e.getMessage());
         }
         finally {
             if(conn != null){
+
                 conn.disconnect();
             }
         }
