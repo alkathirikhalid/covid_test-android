@@ -5,10 +5,13 @@ import android.os.Parcelable;
 
 public class CountryData implements Parcelable {
 
+
     private int active;
     private int deaths;
     private String country;
     private int population;
+    private double activeRatio;
+    private double deathsRatio;
 
 
     public CountryData(int active, int deaths, String country, int population) {
@@ -16,8 +19,8 @@ public class CountryData implements Parcelable {
         this.deaths = deaths;
         this.country = country;
         this.population = population;
-        getActiveRatio = (double) this.active /100000;
-        getDeathRatio = (double) this.deaths /100000;
+        activeRatio = (double) this.active /100000;
+        deathsRatio = (double) this.deaths /100000;
     }
 
 
@@ -54,9 +57,13 @@ public class CountryData implements Parcelable {
         this.population = population;
     }
 
-    public double getActiveRatio;
+    public double getActiveRatio() {
+        return activeRatio;
+    }
 
-    public double getDeathRatio;
+    public double getDeathsRatio() {
+        return deathsRatio;
+    }
 
     @Override
     public String toString() {
@@ -67,6 +74,7 @@ public class CountryData implements Parcelable {
                 ", population=" + population +
                 '}';
     }
+
 
     @Override
     public int describeContents() {
@@ -79,6 +87,8 @@ public class CountryData implements Parcelable {
         dest.writeInt(this.deaths);
         dest.writeString(this.country);
         dest.writeInt(this.population);
+        dest.writeDouble(this.activeRatio);
+        dest.writeDouble(this.deathsRatio);
     }
 
     public void readFromParcel(Parcel source) {
@@ -86,7 +96,8 @@ public class CountryData implements Parcelable {
         this.deaths = source.readInt();
         this.country = source.readString();
         this.population = source.readInt();
-
+        this.activeRatio = source.readDouble();
+        this.deathsRatio = source.readDouble();
     }
 
     protected CountryData(Parcel in) {
@@ -94,11 +105,11 @@ public class CountryData implements Parcelable {
         this.deaths = in.readInt();
         this.country = in.readString();
         this.population = in.readInt();
-        getActiveRatio = (double) active/100000;
-        getDeathRatio = (double)  deaths/100000;
+        this.activeRatio = in.readDouble();
+        this.deathsRatio = in.readDouble();
     }
 
-    public static final Parcelable.Creator<CountryData> CREATOR = new Parcelable.Creator<CountryData>() {
+    public static final Creator<CountryData> CREATOR = new Creator<CountryData>() {
         @Override
         public CountryData createFromParcel(Parcel source) {
             return new CountryData(source);

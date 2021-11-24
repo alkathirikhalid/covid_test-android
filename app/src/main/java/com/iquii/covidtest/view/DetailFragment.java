@@ -31,8 +31,8 @@ public class DetailFragment extends Fragment {
         binding.countryName.setText(data.getCountry());
         binding.activeCases.setText(Integer.toString(data.getActive()));
         binding.deaths.setText(Integer.toString(data.getDeaths()));
-        binding.casesRatio.setText(String.format("%.2f", data.getActiveRatio));
-        binding.deathsRatio.setText(String.format("%.2f", data.getDeathRatio));
+        binding.casesRatio.setText(String.format("%.2f", data.getActiveRatio()));
+        binding.deathsRatio.setText(String.format("%.2f", data.getDeathsRatio()));
 
     }
 }

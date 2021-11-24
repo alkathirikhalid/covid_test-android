@@ -11,18 +11,21 @@ import com.iquii.covidtest.databinding.ListItemBinding;
 import com.iquii.covidtest.model.entity.CountryData;
 
 import java.util.ArrayList;
-import java.util.function.Function;
-import java.util.function.Supplier;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 
 public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryHolder> {
 
     public CountryListAdapter(OnCountryClickListener onCountryClickListener, CountryData[] countryDataList) {
         this.onCountryClickListener = onCountryClickListener;
-        this.countryDataList = countryDataList;
+        this.countryDataList = Arrays.asList(countryDataList);
     }
 
     OnCountryClickListener onCountryClickListener;
-    CountryData[] countryDataList;
+    List<CountryData> countryDataList;
 
     @NonNull
     @Override
@@ -32,12 +35,32 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull CountryHolder holder, int position) {
-        holder.bind(countryDataList[position]);
+        holder.bind(countryDataList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return countryDataList.length;
+        return countryDataList.size();
+    }
+
+    public void sortByActive(){
+        countryDataList.sort(Comparator.comparingInt(CountryData::getActive).reversed());
+        notifyDataSetChanged();
+    }
+
+    public void sortByDeaths(){
+        countryDataList.sort(Comparator.comparingInt(CountryData::getDeaths).reversed());
+        notifyDataSetChanged();
+    }
+
+    public void sortByActiveRatio(){
+        countryDataList.sort(Comparator.comparingDouble(CountryData::getActiveRatio).reversed());
+        notifyDataSetChanged();
+    }
+
+    public void sortByDeathsRatio(){
+        countryDataList.sort(Comparator.comparingDouble(CountryData::getDeathsRatio).reversed());
+        notifyDataSetChanged();
     }
 
     class CountryHolder extends RecyclerView.ViewHolder {
