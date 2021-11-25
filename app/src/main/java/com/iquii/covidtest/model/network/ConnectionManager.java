@@ -20,6 +20,7 @@ public  class ConnectionManager {
         HttpURLConnection conn = null;
         try {
             URL url = new URL(path);
+
              conn = (HttpURLConnection) url.openConnection();
 // 2. Open InputStream to connection
             conn.connect();

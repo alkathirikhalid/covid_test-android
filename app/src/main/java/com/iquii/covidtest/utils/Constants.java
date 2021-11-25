@@ -9,8 +9,11 @@ public  class Constants {
     public static final String UPDATED = "updated";
     public static final String DEATHS = "deaths";
     public static final String DATES = "dates";
-    public static final String URL = "https://covid-api.mmediagroup.fr/v1/cases";
+    public static final String URL_COUNTRIES = "https://covid-api.mmediagroup.fr/v1/cases";
+    public static final String URL_DETAIL = "https://covid-api.mmediagroup.fr/v1/history";
     public static final String ARG_LIST = "countries";
     public static final String ARG_DETAIL = "country";
+    public static final String PARAM_COUNTRY = "country";
+    public static final String PARAM_STATUS = "status";
 
 }

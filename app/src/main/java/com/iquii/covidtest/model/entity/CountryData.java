@@ -26,7 +26,6 @@ public class CountryData implements Parcelable {
     }
 
 
-
     public int getActive() {
         return active;
     }

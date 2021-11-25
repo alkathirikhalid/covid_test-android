@@ -36,7 +36,6 @@ public class Parser {
             int deaths = allObject.optInt(Constants.DEATHS,0);
             String dates = allObject.optString(Constants.DATES,"");
             if(!dates.isEmpty()){
-
                 JSONObject dateObject = allObject.getJSONObject(Constants.DATES);
                  Iterator<String> dateKeys = dateObject.keys();
                  while (dateKeys.hasNext()){

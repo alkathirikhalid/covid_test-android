@@ -66,7 +66,7 @@ public class ListFragment extends Fragment {
 
         switch (item.getItemId()){
             case R.id.sort:
-                PopupMenu popupMenu = new PopupMenu(requireContext(), binding.title);
+                PopupMenu popupMenu = new PopupMenu(requireContext(), getActivity().findViewById(R.id.sort));
                 popupMenu.getMenu().add(0, SORT_ACTIVE, 0, getString(R.string.sort_active));
                 popupMenu.getMenu().add(0, SORT_DEATHS, 0, getString(R.string.sort_deaths));
                 popupMenu.getMenu().add(0, SORT_ACTIVE_RATIO, 0, getString(R.string.sort_active_ratio));

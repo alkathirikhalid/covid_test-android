@@ -1,6 +1,7 @@
 package com.iquii.covidtest.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.iquii.covidtest.controller.DetailController;
 import com.iquii.covidtest.databinding.FragmentDetailBinding;
 import com.iquii.covidtest.model.entity.CountryData;
 import com.iquii.covidtest.utils.Constants;
 
-public class DetailFragment extends Fragment {
+public class DetailFragment extends Fragment implements DetailView {
 
     FragmentDetailBinding binding;
+    DetailController controller = new DetailController();
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        controller.bind(this);
+    }
 
     @Nullable
     @Override
@@ -33,6 +42,10 @@ public class DetailFragment extends Fragment {
         binding.deaths.setText(Integer.toString(data.getDeaths()));
         binding.casesRatio.setText(String.format("%.2f", data.getActiveRatio()));
         binding.deathsRatio.setText(String.format("%.2f", data.getDeathsRatio()));
+    }
+
+    @Override
+    public void showCharts(CountryData countryData) {
 
     }
 }

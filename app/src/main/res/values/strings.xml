@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">CovidTest</string>
-    <string name="list_title">COVID 19 cases in the world today</string>
+    <string name="list_title">Select a Country</string>
     <string name="active_cases">Active cases</string>
     <string name="deaths">Deaths</string>
     <string name="cases_ratio">Active cases for 100.000 habitants</string>
     <string name="deaths_ratio">Deaths for 100.000 habitants</string>
     <string name="sort_active">Sort by active cases</string>
     <string name="sort_deaths">Sort by deaths</string>
-    <string name="sort_active_ratio">Sort by active case over 100000 population</string>
+    <string name="sort_active_ratio">Sort by active case over 100k population</string>
     <string name="sort_deaths_ratio">Sort by deaths over 100k population</string>
 </resources>
