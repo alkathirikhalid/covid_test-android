@@ -3,22 +3,24 @@ package com.iquii.covidtest.model.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.List;
+
 public class CountryData implements Parcelable {
 
 
     private int active;
     private int deaths;
     private String country;
-    private int population;
     private double activeRatio;
     private double deathsRatio;
+    private List<CountryDeaths> countryDeathsList;
 
 
-    public CountryData(int active, int deaths, String country, int population) {
+    public CountryData(int active, int deaths, String country, List<CountryDeaths> countryDeathsList) {
         this.active = active;
         this.deaths = deaths;
         this.country = country;
-        this.population = population;
+        this.countryDeathsList = countryDeathsList;
         activeRatio = (double) this.active /100000;
         deathsRatio = (double) this.deaths /100000;
     }
@@ -29,33 +31,18 @@ public class CountryData implements Parcelable {
         return active;
     }
 
-    public void setActive(int active) {
-        this.active = active;
-    }
 
     public int getDeaths() {
         return deaths;
     }
 
-    public void setDeaths(int deaths) {
-        this.deaths = deaths;
-    }
+
 
     public String getCountry() {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
 
-    public int getPopulation() {
-        return population;
-    }
-
-    public void setPopulation(int population) {
-        this.population = population;
-    }
 
     public double getActiveRatio() {
         return activeRatio;
@@ -71,7 +58,6 @@ public class CountryData implements Parcelable {
                 "active=" + active +
                 ", deaths=" + deaths +
                 ", country='" + country + '\'' +
-                ", population=" + population +
                 '}';
     }
 
@@ -86,27 +72,27 @@ public class CountryData implements Parcelable {
         dest.writeInt(this.active);
         dest.writeInt(this.deaths);
         dest.writeString(this.country);
-        dest.writeInt(this.population);
         dest.writeDouble(this.activeRatio);
         dest.writeDouble(this.deathsRatio);
+        dest.writeTypedList(this.countryDeathsList);
     }
 
     public void readFromParcel(Parcel source) {
         this.active = source.readInt();
         this.deaths = source.readInt();
         this.country = source.readString();
-        this.population = source.readInt();
         this.activeRatio = source.readDouble();
         this.deathsRatio = source.readDouble();
+        this.countryDeathsList = source.createTypedArrayList(CountryDeaths.CREATOR);
     }
 
     protected CountryData(Parcel in) {
         this.active = in.readInt();
         this.deaths = in.readInt();
         this.country = in.readString();
-        this.population = in.readInt();
         this.activeRatio = in.readDouble();
         this.deathsRatio = in.readDouble();
+        this.countryDeathsList = in.createTypedArrayList(CountryDeaths.CREATOR);
     }
 
     public static final Creator<CountryData> CREATOR = new Creator<CountryData>() {

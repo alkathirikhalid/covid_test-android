@@ -3,6 +3,8 @@ package com.iquii.covidtest.view.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,20 +14,26 @@ import com.iquii.covidtest.model.entity.CountryData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 
 
-public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryHolder> {
+public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryHolder> implements Filterable {
 
-    public CountryListAdapter(OnCountryClickListener onCountryClickListener, CountryData[] countryDataList) {
+    public CountryListAdapter(OnCountryClickListener onCountryClickListener, CountryData[] countryData) {
         this.onCountryClickListener = onCountryClickListener;
-        this.countryDataList = Arrays.asList(countryDataList);
+        this.countryDataList.addAll(Arrays.asList(countryData));
+        countryDataListFull = new ArrayList<>(countryDataList);
     }
 
-    OnCountryClickListener onCountryClickListener;
-    List<CountryData> countryDataList;
+
+
+    private OnCountryClickListener onCountryClickListener;
+    private ArrayList<CountryData> countryDataList = new ArrayList<>();
+    private List<CountryData> countryDataListFull;
 
     @NonNull
     @Override
@@ -62,6 +70,41 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         countryDataList.sort(Comparator.comparingDouble(CountryData::getDeathsRatio).reversed());
         notifyDataSetChanged();
     }
+
+    @Override
+    public Filter getFilter() {
+        return countryFilter;
+    }
+
+    private Filter countryFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<CountryData> filteredList = new ArrayList<>();
+            if(constraint == null || constraint.length() == 0){
+                filteredList.addAll(countryDataListFull);
+            }
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(CountryData item : countryDataList){
+                    if(item.getCountry().toLowerCase().startsWith(filterPattern)){
+                        filteredList.add(item);
+
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            countryDataList.clear();
+            countryDataList.addAll((Collection<? extends CountryData>) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
 
     class CountryHolder extends RecyclerView.ViewHolder {
 
