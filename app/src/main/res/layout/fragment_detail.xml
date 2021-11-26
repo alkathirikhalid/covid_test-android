@@ -1,110 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/country_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="@dimen/padding_normal"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textColor="@color/black"
-        android:layout_marginTop="24dp"
+        android:textColor="?attr/colorPrimary"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Italia" />
 
-    <TextView
-        android:id="@+id/label_active"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/active_cases"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:layout_marginEnd="@dimen/padding_normal"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="16dp"
+        app:cardPreventCornerOverlap="true"
+        app:contentPadding="@dimen/padding_normal"
+        app:layout_constraintTop_toBottomOf="@id/country_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/country_name"
-        tools:text="Active Cases" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/active_cases"
-        android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/label_active"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_small"
+                android:text="@string/active_cases"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/active_cases"
+                tools:text="@tools:sample/lorem"/>
+
+            <TextView
+                android:id="@+id/active_cases"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="@id/label_active"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="100000" />
+
+            <TextView
+                android:id="@+id/label_deaths"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_small"
+                android:text="@string/deaths"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_active"
+                app:layout_constraintEnd_toStartOf="@id/active_cases"
+                tools:text="@tools:sample/lorem"/>
+
+            <TextView
+                android:id="@+id/deaths"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="@id/label_deaths"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="100000" />
+
+            <TextView
+                android:id="@+id/label_cases_ratio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_small"
+                android:text="@string/cases_ratio"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_deaths"
+                app:layout_constraintEnd_toStartOf="@id/active_cases"
+                tools:text="@tools:sample/lorem"/>
+
+            <TextView
+                android:id="@+id/cases_ratio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="@id/label_cases_ratio"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="100000" />
+
+            <TextView
+                android:id="@+id/label_deaths_ratio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/padding_small"
+                android:text="@string/deaths_ratio"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_cases_ratio"
+                app:layout_constraintEnd_toStartOf="@id/active_cases"
+                tools:text="@tools:sample/lorem"/>
+
+            <TextView
+                android:id="@+id/deaths_ratio"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                app:layout_constrainedHeight="true"
+                app:layout_constraintBottom_toBottomOf="@id/label_deaths_ratio"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="100000" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_chart"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/purple_700"
-        app:layout_constraintBaseline_toBaselineOf="@id/label_active"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="TextView" />
+        android:layout_marginTop="@dimen/padding_normal"
+        android:layout_marginStart="@dimen/padding_normal"
+        android:layout_marginEnd="@dimen/padding_normal"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="16dp"
+        app:cardPreventCornerOverlap="true"
+        app:contentPadding="@dimen/padding_normal"
+        app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/label_deaths"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/deaths"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/label_active"
-        app:layout_constraintTop_toBottomOf="@+id/label_active" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/deaths"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@id/label_deaths"
-        tools:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="@+id/active_cases"
-       />
+            <!--TODO: REPLACE CHART HERE-->
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/label_cases_ratio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/cases_ratio"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/label_active"
-        app:layout_constraintTop_toBottomOf="@+id/label_deaths" />
 
-    <TextView
-        android:id="@+id/cases_ratio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@id/label_cases_ratio"
-        tools:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="@+id/active_cases"
-        />
-
-    <TextView
-        android:id="@+id/label_deaths_ratio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/deaths_ratio"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/label_active"
-        app:layout_constraintTop_toBottomOf="@+id/label_cases_ratio" />
-
-    <TextView
-        android:id="@+id/deaths_ratio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBaseline_toBaselineOf="@id/label_deaths_ratio"
-        tools:text="TextView"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textColor="@color/purple_700"
-        app:layout_constraintEnd_toEndOf="@+id/active_cases"
-        />
-
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
