@@ -141,7 +141,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_chart"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/padding_normal"
         android:layout_marginStart="@dimen/padding_normal"
         android:layout_marginEnd="@dimen/padding_normal"
@@ -150,17 +150,31 @@
         app:cardPreventCornerOverlap="true"
         app:contentPadding="@dimen/padding_normal"
         app:layout_constraintTop_toBottomOf="@id/card"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <!--TODO: REPLACE CHART HERE-->
-            <Space
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/graph_title"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"/>
+                android:layout_height="wrap_content"
+                android:text="@string/graph_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="?attr/colorPrimary"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+          <com.iquii.covidtest.view.Graphview
+              android:id="@+id/graph_view"
+              app:layout_constraintTop_toBottomOf="@id/graph_title"
+              app:layout_constraintBottom_toBottomOf="parent"
+              android:layout_width="match_parent"
+              android:layout_height="0dp"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

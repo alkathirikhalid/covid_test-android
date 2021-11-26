@@ -54,8 +54,8 @@ public class DetailFragment extends Fragment implements DetailView {
     @Override
     public void showCharts(CountryData countryData) {
         List<CountryDeaths> deaths = countryData.getCountryDeathsList();
-        if(!deaths.isEmpty() && deaths.size() >= 31){
-            deaths = deaths.subList(0,31);
+        if(!deaths.isEmpty() && deaths.size() >= 11){
+            deaths = deaths.subList(0,11);
             Collections.reverse(deaths);
             int oneMonthDeath = deaths.get(0).getQuantity();
             ArrayList<DataPoint> deathsValues = new ArrayList<>();
@@ -64,7 +64,7 @@ public class DetailFragment extends Fragment implements DetailView {
                 Log.d("DEATH", Integer.toString(deathNumberDay));
                 deathsValues.add(new DataPoint(i,deathNumberDay));
             }
-
+            binding.graphView.setData(deathsValues);
         }
     }
 }
