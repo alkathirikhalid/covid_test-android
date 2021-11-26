@@ -13,7 +13,13 @@ import androidx.fragment.app.Fragment;
 import com.iquii.covidtest.controller.DetailController;
 import com.iquii.covidtest.databinding.FragmentDetailBinding;
 import com.iquii.covidtest.model.entity.CountryData;
+import com.iquii.covidtest.model.entity.CountryDeaths;
+import com.iquii.covidtest.model.entity.DataPoint;
 import com.iquii.covidtest.utils.Constants;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class DetailFragment extends Fragment implements DetailView {
 
@@ -47,6 +53,18 @@ public class DetailFragment extends Fragment implements DetailView {
 
     @Override
     public void showCharts(CountryData countryData) {
-        Log.d("COUNTRY", countryData.getCountryDeathsList().get(0).getDate());
+        List<CountryDeaths> deaths = countryData.getCountryDeathsList();
+        if(!deaths.isEmpty() && deaths.size() >= 31){
+            deaths = deaths.subList(0,31);
+            Collections.reverse(deaths);
+            int oneMonthDeath = deaths.get(0).getQuantity();
+            ArrayList<DataPoint> deathsValues = new ArrayList<>();
+            for(int i = 0; i < deaths.size()-1; i++){
+                int deathNumberDay = deaths.get(i+1).getQuantity() - deaths.get(i).getQuantity();
+                Log.d("DEATH", Integer.toString(deathNumberDay));
+                deathsValues.add(new DataPoint(i,deathNumberDay));
+            }
+
+        }
     }
 }
