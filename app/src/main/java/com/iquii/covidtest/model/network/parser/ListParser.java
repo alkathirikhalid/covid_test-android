@@ -1,9 +1,10 @@
-package com.iquii.covidtest.model.network;
+package com.iquii.covidtest.model.network.parser;
 
 import android.util.Log;
 
 import com.iquii.covidtest.model.entity.CountryData;
 import com.iquii.covidtest.model.entity.CountryDeaths;
+import com.iquii.covidtest.model.network.Response;
 import com.iquii.covidtest.utils.Constants;
 
 import org.json.JSONException;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Parser {
+public class ListParser implements Parser {
 
-    public  static ArrayList<CountryData> parse(Response response) throws JSONException {
+    public  ArrayList<CountryData> parse(Response response) throws JSONException {
 
         JSONObject newJson = new JSONObject(response.getBody());
         ArrayList<CountryData> countries = new ArrayList<>();

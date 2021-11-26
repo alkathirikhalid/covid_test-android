@@ -37,6 +37,7 @@ public class DetailFragment extends Fragment implements DetailView {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         CountryData data = requireArguments().getParcelable(Constants.ARG_DETAIL);
+        controller.getCountryDates(data.getCountry());
         binding.countryName.setText(data.getCountry());
         binding.activeCases.setText(Integer.toString(data.getActive()));
         binding.deaths.setText(Integer.toString(data.getDeaths()));
@@ -46,6 +47,6 @@ public class DetailFragment extends Fragment implements DetailView {
 
     @Override
     public void showCharts(CountryData countryData) {
-
+        Log.d("COUNTRY", countryData.getCountryDeathsList().get(0).getDate());
     }
 }

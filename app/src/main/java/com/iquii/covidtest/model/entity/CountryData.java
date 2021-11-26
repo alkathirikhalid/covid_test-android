@@ -51,6 +51,10 @@ public class CountryData implements Parcelable {
         return deathsRatio;
     }
 
+    public List<CountryDeaths> getCountryDeathsList() {
+        return countryDeathsList;
+    }
+
     @Override
     public String toString() {
         return "CountryData{" +

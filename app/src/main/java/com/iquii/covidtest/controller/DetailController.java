@@ -5,6 +5,7 @@ import android.net.Uri;
 import com.iquii.covidtest.model.entity.CountryData;
 import com.iquii.covidtest.model.network.ConnectionManager;
 import com.iquii.covidtest.model.network.NetworkAsyncTask;
+import com.iquii.covidtest.model.network.parser.HistoryParser;
 import com.iquii.covidtest.utils.Constants;
 import com.iquii.covidtest.view.DetailView;
 
@@ -27,7 +28,7 @@ public class DetailController implements GetData<ArrayList<CountryData>> {
                 .appendQueryParameter(Constants.PARAM_STATUS, "deaths")
                 .build();
         String url = builtUri.toString();
-        new NetworkAsyncTask(this).execute(url);
+        new NetworkAsyncTask(this, new HistoryParser()).execute(url);
 
     }
 
