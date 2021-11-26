@@ -32,6 +32,11 @@ public class DetailFragment extends Fragment implements DetailView {
         controller.bind(this);
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

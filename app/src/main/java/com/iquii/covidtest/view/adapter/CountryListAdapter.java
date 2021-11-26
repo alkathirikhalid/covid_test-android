@@ -1,7 +1,6 @@
 package com.iquii.covidtest.view.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -13,27 +12,17 @@ import com.iquii.covidtest.databinding.ListItemBinding;
 import com.iquii.covidtest.model.entity.CountryData;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
 
 
-public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryHolder> implements Filterable {
+public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.CountryHolder> {
 
-    public CountryListAdapter(OnCountryClickListener onCountryClickListener, CountryData[] countryData) {
+    public CountryListAdapter(OnCountryClickListener onCountryClickListener, ArrayList<CountryData> countryData) {
         this.onCountryClickListener = onCountryClickListener;
-        this.countryDataList.addAll(Arrays.asList(countryData));
-        countryDataListFull = new ArrayList<>(countryDataList);
+        this.countryDataList.addAll(countryData);
     }
-
-
 
     private OnCountryClickListener onCountryClickListener;
     private ArrayList<CountryData> countryDataList = new ArrayList<>();
-    private List<CountryData> countryDataListFull;
 
     @NonNull
     @Override
@@ -51,27 +40,8 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         return countryDataList.size();
     }
 
-    public void sortByActive(){
-        countryDataList.sort(Comparator.comparingInt(CountryData::getActive).reversed());
-        notifyDataSetChanged();
-    }
 
-    public void sortByDeaths(){
-        countryDataList.sort(Comparator.comparingInt(CountryData::getDeaths).reversed());
-        notifyDataSetChanged();
-    }
-
-    public void sortByActiveRatio(){
-        countryDataList.sort(Comparator.comparingDouble(CountryData::getActiveRatio).reversed());
-        notifyDataSetChanged();
-    }
-
-    public void sortByDeathsRatio(){
-        countryDataList.sort(Comparator.comparingDouble(CountryData::getDeathsRatio).reversed());
-        notifyDataSetChanged();
-    }
-
-    @Override
+    /*@Override
     public Filter getFilter() {
         return countryFilter;
     }
@@ -103,8 +73,7 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
             countryDataList.addAll((Collection<? extends CountryData>) results.values);
             notifyDataSetChanged();
         }
-    };
-
+    };*/
 
     class CountryHolder extends RecyclerView.ViewHolder {
 
@@ -116,8 +85,6 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
         private ListItemBinding listItemBinding;
 
         public void bind(CountryData item){
-
-
             listItemBinding.tvCountry.setText(item.getCountry());
             listItemBinding.card.setOnClickListener(v -> {
                 onCountryClickListener.onCountryClick(item);

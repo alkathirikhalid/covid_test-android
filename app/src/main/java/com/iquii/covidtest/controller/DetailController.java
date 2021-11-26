@@ -4,7 +4,6 @@ import android.net.Uri;
 
 import com.iquii.covidtest.model.entity.CountryData;
 import com.iquii.covidtest.model.network.ConnectionManager;
-import com.iquii.covidtest.model.network.NetworkAsyncTask;
 import com.iquii.covidtest.model.network.parser.HistoryParser;
 import com.iquii.covidtest.utils.Constants;
 import com.iquii.covidtest.view.DetailView;
@@ -12,7 +11,7 @@ import com.iquii.covidtest.view.DetailView;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class DetailController implements GetData<ArrayList<CountryData>> {
+public class DetailController {
 
     private DetailView view;
 
@@ -20,22 +19,20 @@ public class DetailController implements GetData<ArrayList<CountryData>> {
         this.view = view;
     }
 
-
     public void getCountryDates(String country) {
-        Uri builtUri = Uri.parse(Constants.URL_DETAIL)
+        /*Uri builtUri = Uri.parse(Constants.URL_DETAIL)
                 .buildUpon()
                 .appendQueryParameter(Constants.PARAM_COUNTRY, country)
                 .appendQueryParameter(Constants.PARAM_STATUS, "deaths")
                 .build();
         String url = builtUri.toString();
-        new NetworkAsyncTask(this, new HistoryParser()).execute(url);
-
+        new NetworkAsyncTask(this, new HistoryParser()).execute(url);*/
     }
 
-    @Override
+    /*@Override
     public void getData(ArrayList<CountryData> data) {
         view.showCharts(data.get(0));
-    }
+    }*/
 }
 
 

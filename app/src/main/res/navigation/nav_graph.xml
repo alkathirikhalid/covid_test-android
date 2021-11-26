@@ -8,17 +8,18 @@
         android:id="@+id/listFragment"
         android:name="com.iquii.covidtest.view.ListFragment"
         android:label="ListFragment" >
-        <argument
-            android:name="countries"
-            app:argType="com.iquii.covidtest.model.entity.CountryData[]" />
+
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
+
     </fragment>
+
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.iquii.covidtest.view.DetailFragment"
         android:label="DetailFragment" >
+
         <argument
             android:name="country"
             app:argType="com.iquii.covidtest.model.entity.CountryData" />
