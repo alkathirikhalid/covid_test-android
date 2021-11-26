@@ -117,7 +117,8 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
 
         public void bind(CountryData item){
 
-            listItemBinding.labelName.setText(item.getCountry());
+
+            listItemBinding.tvCountry.setText(item.getCountry());
             listItemBinding.card.setOnClickListener(v -> {
                 onCountryClickListener.onCountryClick(item);
             }) ;

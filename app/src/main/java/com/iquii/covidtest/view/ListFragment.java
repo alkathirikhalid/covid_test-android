@@ -118,8 +118,5 @@ public class ListFragment extends Fragment {
             Navigation.findNavController(view).navigate(R.id.detailFragment, bundle);
         }, data);
         binding.recycler.setAdapter(adapter);
-        binding.title.setOnClickListener(v -> {
-            adapter.sortByActive();
-        });
     }
 }
