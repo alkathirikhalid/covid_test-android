@@ -39,40 +39,6 @@ public class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.
     }
 
 
-    /*@Override
-    public Filter getFilter() {
-        return countryFilter;
-    }
-
-    private Filter countryFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<CountryData> filteredList = new ArrayList<>();
-            if(constraint == null || constraint.length() == 0){
-                filteredList.addAll(countryDataListFull);
-            }
-            else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-                for(CountryData item : countryDataList){
-                    if(item.getCountry().toLowerCase().startsWith(filterPattern)){
-                        filteredList.add(item);
-
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            countryDataList.clear();
-            countryDataList.addAll((Collection<? extends CountryData>) results.values);
-            notifyDataSetChanged();
-        }
-    };*/
-
     class CountryHolder extends RecyclerView.ViewHolder {
 
         public CountryHolder(@NonNull ListItemBinding itemBinding) {
