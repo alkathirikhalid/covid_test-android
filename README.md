@@ -13,7 +13,7 @@ It uses AsyncTask for background threading as requested by test specifications.
 
 
 # UI
-<img src="https://github.com/IQUII/covid_test-android/blob/develop/wiki/list.jpeg" width="240" height="506"><img src="https://github.com/IQUII/covid_test-android/blob/develop/wiki/list.jpeg" width="240" height="506"><img src="https://github.com/IQUII/covid_test-android/blob/develop/wiki/sort.jpeg" width="240" height="506">
+<img src="https://github.com/IQUII/covid_test-android/blob/develop/wiki/list.jpeg" width="240" height="506"><img src="https://github.com/IQUII/covid_test-android/blob/develop/wiki/detail.jpeg" width="240" height="506"><img src="https://github.com/IQUII/covid_test-android/blob/develop/wiki/sort.jpeg" width="240" height="506">
 
 # Import project
 - open your **Terminal** app
