@@ -4,11 +4,10 @@ import android.os.AsyncTask;
 
 import com.iquii.covidtest.model.DataAccessLayer;
 import com.iquii.covidtest.model.entity.CountryData;
-import com.iquii.covidtest.view.ListView;
+import com.iquii.covidtest.view.list.ListView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.List;
 
 
 public class ListController {
@@ -41,27 +40,37 @@ public class ListController {
                 filteredList.add(item);
             }
         }
-        model.getCountryObserver().renderList(filteredList);
+        if (model.getCountryObserver() != null) {
+            model.getCountryObserver().renderList(filteredList);
+        }
     }
 
     public void sortByActive(){
         cachedList.sort(Comparator.comparingInt(CountryData::getActive).reversed());
-        model.getCountryObserver().renderList(cachedList);
+        if (model.getCountryObserver() != null) {
+            model.getCountryObserver().renderList(cachedList);
+        }
     }
 
     public void sortByDeaths(){
         cachedList.sort(Comparator.comparingInt(CountryData::getDeaths).reversed());
-        model.getCountryObserver().renderList(cachedList);
+        if (model.getCountryObserver() != null) {
+            model.getCountryObserver().renderList(cachedList);
+        }
     }
 
     public void sortByActiveRatio(){
         cachedList.sort(Comparator.comparingDouble(CountryData::getActiveRatio).reversed());
-        model.getCountryObserver().renderList(cachedList);
+        if (model.getCountryObserver() != null) {
+            model.getCountryObserver().renderList(cachedList);
+        }
     }
 
     public void sortByDeathsRatio(){
         cachedList.sort(Comparator.comparingDouble(CountryData::getDeathsRatio).reversed());
-        model.getCountryObserver().renderList(cachedList);
+        if (model.getCountryObserver() != null) {
+            model.getCountryObserver().renderList(cachedList);
+        }
     }
 
     public class NetworkAsyncTask extends AsyncTask<String, Void, ArrayList<CountryData>> {
@@ -78,7 +87,9 @@ public class ListController {
 
         @Override
         protected void onPostExecute(ArrayList<CountryData> data) {
-            model.getCountryObserver().loader(false);
+            if (model.getCountryObserver() != null) {
+                model.getCountryObserver().loader(false);
+            }
             model.getCountryObserver().renderList(data);
         }
     }

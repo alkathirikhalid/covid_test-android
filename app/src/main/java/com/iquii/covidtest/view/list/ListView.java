@@ -1,4 +1,4 @@
-package com.iquii.covidtest.view;
+package com.iquii.covidtest.view.list;
 
 
 public interface ListView {

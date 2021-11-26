@@ -1,4 +1,4 @@
-package com.iquii.covidtest.view;
+package com.iquii.covidtest.view.components;
 
 import android.content.Context;
 import android.graphics.Canvas;

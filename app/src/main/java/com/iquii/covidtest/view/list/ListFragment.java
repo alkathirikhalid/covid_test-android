@@ -1,4 +1,4 @@
-package com.iquii.covidtest.view;
+package com.iquii.covidtest.view.list;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,14 +12,12 @@ import android.view.inputmethod.EditorInfo;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.view.menu.ActionMenuItemView;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.iquii.covidtest.R;
-import com.iquii.covidtest.controller.DetailController;
 import com.iquii.covidtest.controller.ListController;
 import com.iquii.covidtest.databinding.FragmentListBinding;
 import com.iquii.covidtest.model.DataAccessLayer;
@@ -35,7 +33,7 @@ public class ListFragment extends Fragment implements ListView, CountryObserver 
 
     private FragmentListBinding binding;
     private ListController controller = new ListController();
-    private DataAccessLayer model = new DataAccessLayer();
+    private DataAccessLayer model = DataAccessLayer.getInstance();
 
     private SearchView searchView;
     private CountryListAdapter adapter;
@@ -62,7 +60,6 @@ public class ListFragment extends Fragment implements ListView, CountryObserver 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-
     }
 
     @Nullable
@@ -114,7 +111,6 @@ public class ListFragment extends Fragment implements ListView, CountryObserver 
             return true;
         }
         return super.onOptionsItemSelected(item);
-
     }
 
     private boolean onClickMenu(MenuItem menuItem) {
@@ -149,7 +145,7 @@ public class ListFragment extends Fragment implements ListView, CountryObserver 
 
     @Override
     public void loader(boolean isEnabled) {
-        //TODO: insert loader
+        binding.loader.setVisibility(isEnabled ? View.VISIBLE : View.GONE);
     }
 
     @Override

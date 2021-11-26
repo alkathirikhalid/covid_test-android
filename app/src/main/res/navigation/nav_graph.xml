@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.iquii.covidtest.view.ListFragment"
+        android:name="com.iquii.covidtest.view.list.ListFragment"
         android:label="ListFragment" >
 
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.iquii.covidtest.view.DetailFragment"
+        android:name="com.iquii.covidtest.view.details.DetailFragment"
         android:label="DetailFragment" >
 
         <argument
