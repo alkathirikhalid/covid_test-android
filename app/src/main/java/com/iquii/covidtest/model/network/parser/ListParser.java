@@ -1,7 +1,5 @@
 package com.iquii.covidtest.model.network.parser;
 
-import android.util.Log;
-
 import com.iquii.covidtest.model.entity.CountryData;
 import com.iquii.covidtest.model.entity.CountryDeaths;
 import com.iquii.covidtest.model.network.Response;
@@ -12,7 +10,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class ListParser implements Parser {
 
